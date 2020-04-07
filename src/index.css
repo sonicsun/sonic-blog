@@ -56,3 +56,9 @@
 .c-docCard {
 	margin: 50px 0;
 }
+
+.c-article {
+	margin: 50px;
+	padding: 50px;
+	background-color: #fff;
+}

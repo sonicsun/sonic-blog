@@ -8,11 +8,11 @@ export function AboutCard() {
 
 	return (
 		<Card className="c-docCard" hoverable style={{ padding: '6px 16px' }}>
-			<h3 style={{ marginBottom: '30px' }}>{t('ABOUT ME')}</h3>
+			<h3 style={{ marginBottom: '30px' }}>{t('关于我')}</h3>
 			<img src={photo} alt="sonic" style={{ maxWidth: '100%' }} />
 			<p style={{ fontSize: '14px', lineHeight: '24px', paddingTop: '25px' }}>
 				{t(
-					"Hi, I'm Sonic Sun. Studied in computer science and technology at Northeast Normal University. Currently internship at Tencent Cloud, as a Front-end Engineer.",
+					'Hi，我是Sonic Sun，就读于东北师范大学，计算机科学与技术专业，现在在腾讯从事前端开发',
 				)}
 			</p>
 		</Card>

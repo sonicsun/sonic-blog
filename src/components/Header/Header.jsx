@@ -2,27 +2,26 @@ import React from 'react';
 import { Menu, Layout } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
+import { changeLanguage } from '../../util';
 
 export function Header() {
-	const { t, i18n } = useTranslation();
-
-	function changeLanguage(lng) {
-		i18n.changeLanguage(lng);
-	}
+	const { t } = useTranslation();
 
 	return (
 		<Layout.Header className="c-header">
 			<div className="c-logo"></div>
 			<Menu mode="horizontal">
-				<Menu.Item key="1">{t('HOME')}</Menu.Item>
-				<Menu.Item key="2">{t('ABOUT ME')}</Menu.Item>
-				<Menu.Item key="3">{t('CONTACT ME')}</Menu.Item>
+				<Menu.Item key="1" onClick={() => (window.location.href = '/')}>
+					{t('主页')}
+				</Menu.Item>
+				<Menu.Item key="2">{t('关于我')}</Menu.Item>
+				<Menu.Item key="3">{t('联系我')}</Menu.Item>
 				<Menu.SubMenu
 					style={{ float: 'right' }}
 					key="sub4"
 					title={
 						<span>
-							{t('LANGUAGE')} <DownOutlined />
+							{t('语言')} <DownOutlined />
 						</span>
 					}
 				>

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { About } from './pages/About/About';
+import { Article } from './pages/Article/Article';
 import { Home } from './pages/Home/Home';
 import './i18n';
 import { Layout } from 'antd';
@@ -17,8 +17,8 @@ function App() {
 			<Content style={{ marginTop: '65.5px' }}>
 				<Router>
 					<Switch>
-						<Route path="/about">
-							<About />
+						<Route path="/article/:pageId">
+							<Article />
 						</Route>
 						<Route path="/">
 							<Home />
