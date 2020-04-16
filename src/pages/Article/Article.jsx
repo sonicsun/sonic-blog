@@ -1,32 +1,44 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Typography, Divider } from 'antd';
-const { Title, Paragraph, Text } = Typography;
+import { Typography, Divider, message } from 'antd';
+import http from '../../api/http';
+
+const { Title } = Typography;
 
 export function Article() {
 	let { pageId } = useParams();
-	console.log(pageId);
+	const [title, setTitle] = useState('');
+	const [content, setContent] = useState('');
+
+	function getArticle(pageId) {
+		http.get('http://localhost:3001/ajax/article/getArticle', {
+			params: {
+				id: pageId,
+			},
+		})
+			.then(resp => {
+				setTitle(resp.data.title);
+				setContent(resp.data.content);
+			})
+			.catch(function (error) {
+				message.error(error);
+			});
+	}
+
+	useEffect(() => {
+		getArticle(pageId);
+		// eslint-disable-next-line
+	}, []);
+
 	return (
 		<div className="c-article">
 			<Typography>
-				<Title>Introduction</Title>
+				<Title>{title}</Title>
 				<Divider />
-				<Paragraph>
-					In the process of internal desktop applications development, many different
-					design specs and implementations would be involved, which might cause designers
-					and developers difficulties and duplication and reduce the efficiency of
-					development.
-				</Paragraph>
-				<Paragraph>
-					After massive project practice and summaries, Ant Design, a design language for
-					background applications, is refined by Ant UED Team, which aims to
-					<Text strong>
-						uniform the user interface specs for internal background projects, lower the
-						unnecessary cost of design differences and implementation and liberate the
-						resources of design and front-end development
-					</Text>
-					.
-				</Paragraph>
+				<div
+					dangerouslySetInnerHTML={{ __html: content }}
+					className="c-article-content"
+				></div>
 			</Typography>
 		</div>
 	);

@@ -7,18 +7,26 @@ import { Home } from './pages/Home/Home';
 import './i18n';
 import { Layout } from 'antd';
 import { Header } from './components/Header/Header';
+import { Login } from './pages/Login/Login';
+import { Management } from './pages/Management/Management';
 
 const { Footer, Content } = Layout;
 
 function App() {
 	return (
-		<Layout>
+		<Layout style={{ height: '100%' }}>
 			<Header />
 			<Content style={{ marginTop: '65.5px' }}>
 				<Router>
 					<Switch>
 						<Route path="/article/:pageId">
 							<Article />
+						</Route>
+						<Route path="/login">
+							<Login />
+						</Route>
+						<Route path="/management">
+							<Management />
 						</Route>
 						<Route path="/">
 							<Home />
